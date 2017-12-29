@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <input type="hidden" id="member" />
+    <h1>Online User</h1>
+    <div id="showmember"></div>
+    <div id="realtimeData"></div>
+    <button id="randbutton">Random Int</button>
+
+
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>    
+    <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>    
+    <script src="signalr/hubs"></script>   
+    <script type="text/javascript">
+        $(function () {
+            var chat = $.connection.chatHub;
+           
+
+            $('#member').val(prompt('Enter member name:', ''));
+         
+            chat.client.ClientOnline = function (name) {
+               
+                var data = [];
+                data.push(name);
+                $('#showmember').append(data[0] + " ");
+                
+                console.log(chat.state.userName = "userName1");
+                console.log(chat.state.userName2 = "userName2");
+                console.log(chat);
+            };
+
+
+            chat.state.userName = $('#member').val(); 
+
+
+            
+
+            $("#randbutton").click(
+                chat.client.realtime = function (rdata) {
+                    $("#realtimeData").append(rdata);
+                    console.log(rdata);
+                    console.log("Test");
+                }
+            );
+             
+            
+
+            $.connection.hub.start().done(function () {
+                chat.server.showAllClient($('#member').val());
+                // chat.state.userName = "Setthawut";
+                
+                 chat.server.realtimeData();
+                
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

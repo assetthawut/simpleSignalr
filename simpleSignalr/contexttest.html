@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <input type="hidden" id="member" />
+    <h1>Online User</h1>
+    <div id="showmember"></div>
+    <div id="realtimeData"></div>
+    <button id="testbutton">Test Button</button>
+
+
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>    
+    <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>    
+    <script src="signalr/hubs"></script>   
+    <script type="text/javascript">
+        /*
+        $(function () {
+            var chat = $.connection.chatHub;
+           
+
+            $('#member').val(prompt('Enter member name:', ''));
+         
+            chat.client.ClientOnline = function (name) {
+               
+                var data = [];
+                data.push(name);
+                $('#showmember').append(data[0] + " ");
+                
+                console.log(chat.state.userName = "userName1");
+                console.log(chat.state.userName2 = "userName2");
+                console.log(chat);
+            };
+
+
+            chat.state.userName = $('#member').val(); 
+
+
+            
+
+            $("#randbutton").click(
+                chat.client.realtime = function (rdata) {
+                    $("#realtimeData").append(rdata);
+                    console.log(rdata);
+                    console.log("Test");
+                }
+            );
+             
+            
+
+            $.connection.hub.start().done(function () {
+                chat.server.showAllClient($('#member').val());
+                // chat.state.userName = "Setthawut";
+                
+                 chat.server.realtimeData();
+                
+            });
+
+
+
+        });
+        */
+        /*
+        $(function () {
+            var contexttest = $.connection.samplecontext;
+            console.log(contexttest);
+            contexttest.client.yahoo = function(message){
+                console.log("Joe");
+            };
+            contexttest.client.showdata = function (message) {
+                console.log(">>>>>" + message);
+            };
+
+
+            $.connection.hub.start().done(function () {
+                contexttest.server.testmethod("Test");
+            });
+        });
+
+        */
+
+        //var connection = $.hubConnection();
+        //var hubproxy = connection.createHubProxy("chatHub");
+        /*
+        hubproxy.on('clientonline', function (outputdata) {
+            console.log("Hi");
+        });
+        */
+        //console.log(hubproxy);
+        /*
+        connection.client.showdata = function (message) {
+            console.log("Message >>>");
+        }
+        */
+        /*
+        hub.client.showdata = function (message) {
+            console.log("Message >>>");
+        }
+        */
+        //hub.on("showdata");
+        
+/*
+        hub.clients.showdata = function (message) {
+            console.log(">>> showdata >>>");
+        }
+*/
+/*
+        console.log("Show Conn" + String(connection));
+
+        connection.start().done(function () {
+            console.log("start >>> done!");
+        });
+
+
+        $("#testbutton").click(function () {
+            console.log("Test");
+           // console.log(hubproxy.connection);
+        });
+*/
+
+
+        var connection = $.hubConnection();
+
+        var chathubproxy = connection.createHubProxy('chatHub');
+        chathubproxy.on('clientOnline', function (name) {
+            console.log(" >>>> "+name);
+        });
+
+       
+        /*
+        var connection1 = $.hubConnection();
+        connection1.logging = true;
+        var chathubproxy1 = connection1.createHubProxy('sampleContext');
+        chathubproxy1.on('showData', function (message) {
+            console.log("Hello");
+        });
+        */
+
+        /*
+        connection.start().done(function () {
+            chathubproxy.invoke('showAllClient', 'joe');
+        });
+        */
+
+       /*
+        connection1.start().done(function () {
+
+            chathubproxy1.invoke('testmethod', 'joe');
+        });
+       */
+
+        $(function () {
+            var testcontext = $.connection.sampleContext;
+            testcontext.client.showData = function (msg) {
+                console.log(msg);
+            }
+
+            $.connection.hub.start().done(function () {
+                console.log("Done !");
+                testcontext.client.showData("6555555");
+            });
+
+
+
+        });
+        
+    </script>
+</body>
+</html>
