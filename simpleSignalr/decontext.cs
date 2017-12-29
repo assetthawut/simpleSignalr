@@ -13,7 +13,6 @@ namespace simpleSignalr
         {
 
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<SampleContext>();
-
             hubContext.Clients.All.ShowData(message);
 
         }
