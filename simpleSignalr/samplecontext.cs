@@ -10,6 +10,6 @@ namespace simpleSignalr
   
     public class SampleContext : Hub
     {
-        
+       
     }
 }

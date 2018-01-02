@@ -121,7 +121,7 @@
            // console.log(hubproxy.connection);
         });
 */
-
+        /*
 
         var connection = $.hubConnection();
 
@@ -130,15 +130,16 @@
             console.log(" >>>> "+name);
         });
 
-       
-        /*
+       */
+        
         var connection1 = $.hubConnection();
         connection1.logging = true;
-        var chathubproxy1 = connection1.createHubProxy('sampleContext');
+        var chathubproxy1 = connection1.createHubProxy('SampleContext');
+        console.log(chathubproxy1);
         chathubproxy1.on('showData', function (message) {
             console.log("Hello");
         });
-        */
+        
 
         /*
         connection.start().done(function () {
@@ -146,13 +147,16 @@
         });
         */
 
-       /*
+       
         connection1.start().done(function () {
 
-            chathubproxy1.invoke('testmethod', 'joe');
+            chathubproxy1.invoke('showData', 'joe');
         });
-       */
+       
 
+
+        /*
+        //Success
         $(function () {
             var testcontext = $.connection.sampleContext;
             testcontext.client.showData = function (msg) {
@@ -164,10 +168,10 @@
                 testcontext.client.showData("Test Parameter");
             });
 
-
+        
 
         });
-        
+        */
     </script>
 </body>
 </html>
